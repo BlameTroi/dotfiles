@@ -1,0 +1,13 @@
+\.cache/*
+\.elinks/*
+\keep.vim/*
+\.npm/*
+\.gem/*
+temp/*
+\.thumbnails/*
+\.node_modules/*
+*.o
+a.out
+\.*_history
+modern-x86-assembly-language-programming-master/*
+tags

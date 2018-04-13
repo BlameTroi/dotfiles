@@ -1,0 +1,11 @@
+git submodule add https://github.com/tpope/vim-fugitive.git vim/pack/troi/start/vim-fugitive
+git submodule add https://github.com/tpope/vim-sensible.git vim/pack/troi/start/vim-sensible
+git submodule add https://github.com/tpope/vim-surround.git vim/pack/troi/start/vim-surround
+git submodule add https://github.com/vimwiki/vimwiki.git vim/pack/troi/start/vimwiki
+git submodule add https://github.com/ctrlpvim/ctrlp.vim.git vim/pack/troi/start/ctrlp
+git submodule add https://github.com/itchyny/lightline.vim.git vim/pack/troi/start/lightline
+git submodule add https://github.com/junegunn/goyo.vim.git vim/pack/troi/start/goyo
+git submodule add https://github.com/scrooloose/nerdtree.git vim/pack/troi/start/nerdtree
+git submodule add https://github.com/scrooloose/nerdcommenter.git vim/pack/troi/start/nerdcommenter
+git submodule add https://github.com/vimoutliner/vimoutliner.git vim/pack/troi/start/vimoutliner
+git submodule add https://github.com/airblade/vim-gitgutter.git vim/pack/troi/start/vim-gitgutter
