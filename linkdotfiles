@@ -5,26 +5,26 @@
 # for sure)
 
 # bash
-ln -sv dotfiles/bashrc .bashrc
+ln -sv ~/dotfiles/bashrc ~/.bashrc
 
 # global git
-ln -sv dotfiles/gitconfig .gitconfig
-ln -sv dotfiles/gitignore .gitignore
+ln -sv ~/dotfiles/gitconfig ~/.gitconfig
+ln -sv ~/dotfiles/gitignore ~/.gitignore
 
 # vim
-ln -sv dotfiles/gvimrc .gvimrc
-ln -sv dotfiles/vimrc .vimrc
-ln -sv dotfiles/vim .vim
+ln -sv ~/dotfiles/gvimrc ~/.gvimrc
+ln -sv ~/dotfiles/vimrc ~/.vimrc
+ln -sv ~/dotfiles/vim ~/.vim
 
 # misc
-ln -sv dotfiles/gdbinit .config/.gdbinit
+ln -sv ~/dotfiles/gdbinit ~/.config/.gdbinit
+ln -sv ~/dotfiles/tmux.conf ~/.tmux.conf
 
 # these need verification
 
 # also, the following arent' in my dotfiles
 # yet but probably should be
 # .ssh directory
-# .tmux.conf
 # .inputrc
 # .bash_profile
 # .profile
