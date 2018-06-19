@@ -83,5 +83,5 @@
 " }
 " Filetype customization {
     syntax enable
-    let asmsyntax="nasm"            " default assembly file syntax
+    "let asmsyntax="nasm"            " default assembly file syntax
 " }
