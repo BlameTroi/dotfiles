@@ -17,4 +17,3 @@ environment.
 
 Window manager and X support included. I use xterm and
 i3wm at present.
-"# my various dotfiles" 
