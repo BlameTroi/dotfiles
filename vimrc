@@ -83,5 +83,6 @@
 " }
 " Filetype customization {
     syntax enable
+    filetype plugin indent on
     "let asmsyntax="nasm"            " default assembly file syntax
 " }
