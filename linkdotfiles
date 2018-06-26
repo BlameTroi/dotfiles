@@ -9,7 +9,10 @@ ln -sv ~/dotfiles/bashrc ~/.bashrc
 
 # global git
 ln -sv ~/dotfiles/gitconfig ~/.gitconfig
-ln -sv ~/dotfiles/gitignore ~/.gitignore
+ln -sv ~/dotfiles/git ~/.config/git
+
+# above dotfiles/git is unsafe, this script needs
+# to become smarter!
 
 # vim
 ln -sv ~/dotfiles/gvimrc ~/.gvimrc
