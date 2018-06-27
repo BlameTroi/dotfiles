@@ -46,4 +46,4 @@ Thumbs.db
 # editor and scratch #
 ######################
 *.swp
-tags
+tags*
