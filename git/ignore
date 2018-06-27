@@ -45,6 +45,5 @@ Thumbs.db
 
 # editor and scratch #
 ######################
-.vim/
 *.swp
 tags
