@@ -1410,7 +1410,7 @@ au BufNewFile,BufRead */etc/passwd,*/etc/passwd-,*/etc/passwd.edit,*/etc/shadow,
 " to filetype.vim. Keeping this clip.
 " also to do, create free pascal versions of everything
 if (1==1) "change to "1==0" to use original syntax
-  au BufNewFile,BufRead *.pas,*.PAS set ft=fpc
+  au BufNewFile,BufRead *.pas,*.PAS set ft=freepascal
 else
   au BufNewFile,BufRead *.pas,*.PAS set ft=pascal
 endif
