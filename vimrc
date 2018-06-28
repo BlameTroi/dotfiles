@@ -16,7 +16,6 @@
         if !WINDOWS()
             set shell=/bin/bash
         endif
-    "    execute pathogen#infect()
     " }
     " Windows Compatible {
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
@@ -66,9 +65,6 @@
     set foldenable                  " Auto fold code
     " set list
     " set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-"    if !has("gui")
-"        colors mrkn256
-"    endif
 " }
 " Formatting {
     set nowrap                      " Do not wrap long lines
@@ -85,4 +81,8 @@
     syntax enable
     filetype plugin indent on
     "let asmsyntax="nasm"            " default assembly file syntax
+" }
+" UI Stuff {
+    colorscheme lucius
+    LuciusBlack
 " }
