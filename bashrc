@@ -115,6 +115,9 @@ alias la='ls -A'                              # all but . and ..
 alias l='ls -CF'                              #
 alias lla='ls -lA'
 
+# for midnight commander until i can get a decent skin worked up
+alias mc='mc -b'
+
 # Umask
 #
 # /etc/profile sets 022, removing write perms to group + others.
