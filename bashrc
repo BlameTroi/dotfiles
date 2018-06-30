@@ -232,5 +232,8 @@ unset prependpath
 #set up browser for ddgr
 export BROWSER=lynx
 
+# i keep forgetting to set colors for tmux
+alias tmux='tmux -2'
+
 # if nvim is installed, use it instead of vim
 #[[ -x /usr/bin/nvim ]] && alias vim=nvim
