@@ -3,6 +3,7 @@
 	email = blametroi@gmail.com
 [core]
 	editor = vim
+	excludesfile = ~/.gitignore
 [merge]
 	tool = vimdiff
 [credential]

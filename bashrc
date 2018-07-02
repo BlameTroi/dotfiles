@@ -125,6 +125,7 @@ alias mc='mc -b'
 # umask 027
 # Paranoid: neither group nor others have any perms:
 # umask 077
+umask 033
 
 # Functions
 #
