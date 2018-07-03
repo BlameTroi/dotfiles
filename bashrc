@@ -202,13 +202,24 @@ umask 033
 # 
 # alias cd=cd_func
 
-# my additions
-alias emacs='emacs -nw'
+# #####################################################
+# my customizations:
+
+# prompt
+__git_ps1 ()
+{
+    local b="$(git symbolic-ref HEAD 2>/dev/null)";
+    if [ -n "$b" ]; then
+        printf "(%s)" "${b##refs/heads/}";
+    fi
+}
+
+#PS1='[\u@\h \W]\$ '
+#PS1="\u@\h \W\$(__git_ps1)$ "
+PS1="\h \W\$(__git_ps1)$ "
 
 set -o vi
 
-#alias ls='ls --color=auto'
-PS1='[\u@\h \W]\$ '
 alias cls=clear
 
 # [[ -d ~/bin ]] && PATH=~/bin:$PATH
@@ -224,20 +235,27 @@ prependpath () {
     esac
 }
 
-mb=$HOME/.gem/ruby/2.5.0/bin
-[[ -d $mb ]] && prependpath "$mb"
+#mb=$HOME/.gem/ruby/2.5.0/bin
+#[[ -d $mb ]] && prependpath "$mb"
 mb=$HOME/bin
 [[ -d $mb ]] && prependpath "$mb"
-
 
 unset mb
 unset prependpath
 
-#set up browser for ddgr
+# set up browser for ddgr
 export BROWSER=lynx
+
+# no windows for emacs
+alias emacs='emacs -nw'
 
 # i keep forgetting to set colors for tmux
 alias tmux='tmux -2'
 
+# colors for mc not quite right yet
+alias mc='mc -b'
+
 # if nvim is installed, use it instead of vim
+# ### nvim is proving problematic so ... let's
+# ### just stay with vim
 #[[ -x /usr/bin/nvim ]] && alias vim=nvim
