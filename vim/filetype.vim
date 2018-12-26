@@ -242,7 +242,7 @@ au BufNewFile,BufRead *.awk			setf awk
 au BufNewFile,BufRead *.mch,*.ref,*.imp		setf b
 
 " BASIC or Visual Basic
-au BufNewFile,BufRead *.bas			call s:FTVB("basic")
+" au BufNewFile,BufRead *.bas			call s:FTVB("basic")
 
 " Check if one of the first five lines contains "VB_Name".  In that case it is
 " probably a Visual Basic file.  Otherwise it's assumed to be "alt" filetype.
@@ -260,8 +260,11 @@ au BufNewFile,BufRead *.vb,*.vbs,*.dsm,*.ctl	setf vb
 " IBasic file (similar to QBasic)
 au BufNewFile,BufRead *.iba,*.ibi		setf ibasic
 
-" FreeBasic file (similar to QBasic)
-au BufNewFile,BufRead *.fb,*.bi			setf freebasic
+"" FreeBasic file (similar to QBasic)
+"au BufNewFile,BufRead *.bas,*.fb,*.bi,*.bm  setf freebasic
+
+" QB64 file, a QB4.5 successor
+au BufNewFile,BufRead *.bas,*.bi,*.bm setf qb64
 
 " Batch file for MSDOS.
 au BufNewFile,BufRead *.bat,*.sys		setf dosbatch
