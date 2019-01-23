@@ -1,0 +1,17 @@
+#!/bin/sh
+# Under virtualbox we sometimes fail to
+# get the proper screen size after starting
+# a window manager. this command appears
+# to do the trick. I'm not putting it in
+# .xinitrc, I'd rather do it manually
+# when needed right now.
+
+xrandr --output VGA-1 --preferred
+
+# --mode XxY for a specific available mode
+# listed after xrandr with no arguments.
+# --auto looks for a best option
+# --preferred looks for the mode
+# that is prefered for the output, which
+# seems to be the physical screen resolution
+# when running under virtualbox.

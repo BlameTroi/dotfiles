@@ -27,7 +27,7 @@
     
 " }
 " Vim UI {
-    set tabpagemax=10               " Only show 15 tabs
+    set tabpagemax=10               " Only show 10 tabs
     set showmode                    " Display the current mode
     set cursorline                  " Highlight current line
     highlight clear SignColumn      " SignColumn should match background
@@ -83,6 +83,9 @@
     "let asmsyntax="nasm"            " default assembly file syntax
 " }
 " UI Stuff {
-    colorscheme lucius
-    LuciusBlack
+    "colorscheme slate
+    "colorscheme lucius
+    "LuciusBlack
+    let g:monochrome_italic_comments = 0
+    colorscheme monochrome
 " }
