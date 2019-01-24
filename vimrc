@@ -86,6 +86,8 @@
     "colorscheme slate
     "colorscheme lucius
     "LuciusBlack
-    let g:monochrome_italic_comments = 0
-    colorscheme monochrome
+    "let g:monochrome_italic_comments = 1
+    "colorscheme monochrome
+    colorscheme nightshade
+    highlight comment cterm=italic
 " }
