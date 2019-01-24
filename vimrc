@@ -88,6 +88,11 @@
     "LuciusBlack
     "let g:monochrome_italic_comments = 1
     "colorscheme monochrome
-    colorscheme nightshade
+    "colorscheme nightshade
+    colorscheme cobalt
+    " it seems that most colorschemes do cterm=none for comments, and
+    " switching schemes will override this setting. i don't know enough
+    " about how people really do things in the vim world to be comfortable
+    " putting this in the color schemes as an override just yet.
     highlight comment cterm=italic
 " }
