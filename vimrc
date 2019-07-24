@@ -83,6 +83,7 @@
     "let asmsyntax="nasm"            " default assembly file syntax
 " }
 " UI Stuff {
-    colorscheme lucius
-    LuciusBlack
+"colorscheme lucius
+"LuciusBlack
+    colorscheme crt3270
 " }

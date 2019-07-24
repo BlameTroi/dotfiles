@@ -155,7 +155,7 @@ function! qb64dev#QB64Compile()
     let qb64dir = qb64dev#QB64Dir()
     " this exe name is in dos format for qb64
     let exefilename = s:ExeFilename(currentfilename)
-    call system(qb64dev#ExeName() . ' -x -o ' .  exefilename . ' ' . currentfilename)
+    call system(qb64dev#ExeName() . ' -c -o ' .  exefilename . ' ' . currentfilename)
 endfunction
 command! -nargs=0 QB64Compile : call qb64dev#QB64Compile()
 

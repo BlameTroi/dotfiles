@@ -260,11 +260,15 @@ au BufNewFile,BufRead *.vb,*.vbs,*.dsm,*.ctl	setf vb
 " IBasic file (similar to QBasic)
 au BufNewFile,BufRead *.iba,*.ibi		setf ibasic
 
-"" FreeBasic file (similar to QBasic)
+" FreeBasic file (similar to QBasic)
 "au BufNewFile,BufRead *.bas,*.fb,*.bi,*.bm  setf freebasic
 
+" Liberty BASIC, a smaller language than qb or fb or vb,
+" pick up qb and fb extensions as well
+au BufNewFile,BufRead *.bas,*.bi,*.bm,*.fb setf libertybasic
+
 " QB64 file, a QB4.5 successor
-au BufNewFile,BufRead *.bas,*.bi,*.bm setf qb64
+"au BufNewFile,BufRead *.bas,*.bi,*.bm setf qb64
 
 " Batch file for MSDOS.
 au BufNewFile,BufRead *.bat,*.sys		setf dosbatch
