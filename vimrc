@@ -83,11 +83,8 @@
     "let asmsyntax="nasm"            " default assembly file syntax
 " }
 " UI Stuff {
-<<<<<<< HEAD
 "colorscheme lucius
 "LuciusBlack
-    colorscheme crt3270
-=======
     "colorscheme slate
     "colorscheme lucius
     "LuciusBlack
@@ -100,5 +97,4 @@
     " about how people really do things in the vim world to be comfortable
     " putting this in the color schemes as an override just yet.
     highlight comment cterm=italic
->>>>>>> 88fb0a3896c8c277b4db84d212c0c2dfc56dd936
 " }
