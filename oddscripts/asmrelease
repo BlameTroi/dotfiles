@@ -1,0 +1,9 @@
+#!/bin/bash
+# standard assembly for release
+# param is filename
+if [ -z "$1" ]; then
+    echo "missing argument"
+else
+    yasm -f elf64 -l "$1.lst" -o "$1.o" "$1.asm"
+    ld -Map="$1.map" -o "$1" "$1.o"
+fi

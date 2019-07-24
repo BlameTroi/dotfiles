@@ -27,7 +27,7 @@
     
 " }
 " Vim UI {
-    set tabpagemax=10               " Only show 15 tabs
+    set tabpagemax=10               " Only show 10 tabs
     set showmode                    " Display the current mode
     set cursorline                  " Highlight current line
     highlight clear SignColumn      " SignColumn should match background
@@ -83,7 +83,22 @@
     "let asmsyntax="nasm"            " default assembly file syntax
 " }
 " UI Stuff {
+<<<<<<< HEAD
 "colorscheme lucius
 "LuciusBlack
     colorscheme crt3270
+=======
+    "colorscheme slate
+    "colorscheme lucius
+    "LuciusBlack
+    "let g:monochrome_italic_comments = 1
+    "colorscheme monochrome
+    "colorscheme nightshade
+    colorscheme cobalt
+    " it seems that most colorschemes do cterm=none for comments, and
+    " switching schemes will override this setting. i don't know enough
+    " about how people really do things in the vim world to be comfortable
+    " putting this in the color schemes as an override just yet.
+    highlight comment cterm=italic
+>>>>>>> 88fb0a3896c8c277b4db84d212c0c2dfc56dd936
 " }

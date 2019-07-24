@@ -1,0 +1,1 @@
+rsync -av --munge-links --exclude-from=/home/troi/dotfiles/rsync-exclude-from /home/troi /media/sf_shared/archie

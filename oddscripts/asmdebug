@@ -1,0 +1,15 @@
+#!/bin/bash
+# standard assembly for debugging 
+# param is filename
+
+[[ -z "$1" ]] && { echo "missing argument: filename"; exit 1; }
+
+[[ ! -f "$1.asm" ]] && { echo "filename $1.asm not found"; exit 1; }
+
+asmclean "$1"
+# yasm -g dwarf2 nasm -gdwarf, why i have no idea
+nasm -f elf64 -gdwarf -l "$1.lst" -o "$1.o" "$1.asm"
+
+[[ ! -f "$1.o" ]] && { echo "error in assembly, can not continue"; exit 1; }
+
+ld -Map="$1.map" -o "$1" "$1.o"
