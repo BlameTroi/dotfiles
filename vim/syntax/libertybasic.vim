@@ -11,6 +11,10 @@
 "       Free BASIC, so I decided to start over from scratch. I may
 "       lift some patterns from the Free BASIC syntax file.
 "
+"       Keywords, function names, and system variable names are pulled
+"       from the help file included with the Liberty BASIC 4.5.1
+"       environment.
+"
 " Progress:
 "
 "   07/24/2019:
@@ -23,7 +27,7 @@
 "   Folding can be done manually or by indent, so I don't feel any
 "   real need to support regions.
 "
-"   I've lifted one bit of code from libertybasic.vim, and it may go
+"   I've lifted one bit of code from freebasic.vim, and it may go
 "   back further, to deal with parenthesis errors. This is still
 "   commented out but I will try to get it to work.
 "
@@ -49,14 +53,10 @@ syn clear
 "    match when needed, returning to case ignore once done.
 " 7) note that the opening paren is part of the function name
 "    according to the documentation, but that causes side effects
-"    in this definition so I'm going to ignore it.
+"    in this definition so I'm going to ignore it in this file.
 "
  setlocal iskeyword+=\$
  syn case ignore
-"
-" Keywords, function names, and system variable names are pulled
-" from the help file included with the Liberty BASIC 4.5.1
-" environment.
 "
 ">>>>keywords, reserved words:
 "
@@ -137,27 +137,21 @@ syn clear
 " I'm taking the easy way out here and sticking with
 " keywords instead of matches.
 "
- syn keyword lbConditional IF
- syn keyword lbConditional THEN
- syn keyword lbConditional ELSE
- syn keyword lbConditional END
- syn keyword lbConditional SELECT
- syn keyword lbConditional CASE
- syn keyword lbLoop FOR
- syn keyword lbLoop TO
- syn keyword lbLoop STEP
- syn keyword lbLoop NEXT
- syn keyword lbLoop WHILE
- syn keyword lbLoop WEND
- syn keyword lbLoop DO
- syn keyword lbLoop UNTIL
- syn keyword lbLoop LOOP
+ syn keyword lbConditional IF THEN ELSE END
+ syn keyword lbConditional SELECT CASE
+ syn keyword lbLoop FOR TO STEP NEXT
+ syn keyword lbLoop WHILE WEND
+ syn keyword lbLoop DO LOOP UNTIL
 "
 ">>>>Data and type definition:
- syn keyword lbType AS BOOLEAN BYREF DATA
- syn keyword lbTYPE DIM DOUBLE DWORD
+" some of these are flagged as just keywords, such as dim
+" so the highlighting of dim a$(10) makes sense as read.
+"
+ syn keyword lbKeyword AS DATA DIM READ REDIM RESTORE
+ syn keyword lbType BOOLEAN BYREF DATA
+ syn keyword lbTYPE DOUBLE DWORD
  syn keyword lbType FIELD GLOBAL LONG
- syn keyword lbType PTR READ REDIM RESTORE SHORT
+ syn keyword lbType PTR SHORT
  syn keyword lbType ULONG USHORT VOID WORD
 "
 ">>>>File and I/O:
@@ -174,12 +168,11 @@ syn keyword lbFile DLL GRAPHICS
  syn match lbFloat "\<\d\+\.\d*\(e[-+]\=\d\+\)\=[fl]\=\>"
  syn match lbFloat "\.\d\+\(e[-+]\=\d\+\)\=[fl]\=\>"
  syn match lbFloat "\<\d\+e[-+]\=\d\+[fl]\=\>"
-">>>>Strings. Since branch labels can be included in print to window,
+" Strings. Since branch labels can be included in print to window,
 " make sure they are highlighted.
- syn region lbString  start='"' end='"' contains=lbSpecial,lbLabel
+ syn region lbString  start='"' end='"' contains=lbLabel
 "
-">>>>Special text matches for strings and comments:
- syn match lbSpecial contained "\\."
+">>>>Special text matches to highlight in comments
  syn keyword lbTodo contained TODO
 "
 ">>>>Expression Operators:
@@ -187,8 +180,10 @@ syn keyword lbFile DLL GRAPHICS
 " in lb 4.5.1.
  syn match lbMathOp "[\+\-\=\*\/\>\<\^]"
  syn keyword lbLogicalOp AND OR XOR NOT
+"
 ">>>>Variable name identifier:
  syn match lbIdentifier  "\<[a-zA-Z][a-zA-Z0-9]*\$*\>"
+"
 ">>>>Labels, as distinct from line numbers:
  syn region lbLabel start="\[" end="\]"
 "
@@ -196,16 +191,17 @@ syn keyword lbFile DLL GRAPHICS
 "
 " comments are either REM or apostrophe opened and end at the end of the
 " line. remember to extra highlight TODO. 
-"
-" *** due to how match priority works, these need to come after
-" *** definitions such as identifier and label text.
+" 'rem' format comments must be preceeded by all blanks on the
+" line or a colon and blanks, ie, 'rem' is the first token on the
+" logical line
 "
  syn region lbComment start="\s*'" end="$" contains=lbTodo
  syn region lbComment start="^'" end="$" contains=lbTodo
  syn region lbComment start=":\s*rem" end="$" contains=lbTodo
  syn region lbComment start="^\s*rem" end="$" contains=lbTodo
 ">>>>>>>>>>IDEAS<<<<<<<<<
-"** Catch errors caused by wrong parenthesis
+"** recognize handle number and variables (#).
+"** Catch errors caused by wrong parenthesis.
 " from freebasic.vim
 "syn region libertybasicParen  transparent start='(' end=')' contains=ALLBUT,@libertybasicParenGroup
 "syn match libertybasicParenError ")"
@@ -224,52 +220,24 @@ if version >= 508 || !exists("did_lbasic_syntax_inits")
   else
     command -nargs=+ HiLink hi def link <args>
   endif
-
-  HiLink lbDateTime  Type
-  HiLink lbType Type
-  HiLink lbFunction  Function
+  HiLink lbDateTime     Type
+  HiLink lbType         Type
+  HiLink lbFunction     Function
   HiLink lbSystemVariable Special
-  HiLink lbString  String
-  HiLink lbMathOp Operator
-  HiLink lbLogicalOp Operator
-  HiLink lbInteger  Number
-  HiLink lbFloat  Number
-  HiLink lbTodo  Todo
-  HiLink lbKeyword Statement
-  HiLink lbComment  Comment
-  HiLink lbLoop Repeat
-  HiLink lbConditional Number
-  HiLink lbLabel Number
-  HiLink lbFile Identifier
-" HiLink lbLineNumber  Label
-" HiLink lbSpecial  Special
-" HiLink libertybasicArrays  Statement
-" HiLink libertybasicBitManipulation Operator
-" HiLink libertybasicCompilerSwitches PreCondit
-" HiLink libertybasicConsole  Identifier
-" HiLink libertybasicDataTypes  Type
-" HiLink libertybasicDebug  Special
-" HiLink libertybasicErrorHandling Special
-" HiLink libertybasicGraphics  Function
-" HiLink libertybasicHardware  Identifier
-" HiLink libertybasicMemory  Function
-" HiLink libertybasicMisc  Special
-" HiLink libertybasicModularizing Special
-" HiLink libertybasicMultithreading Special
-" HiLink libertybasicShell  Special
-" HiLink libertybasicEnviron  Special
-" HiLink libertybasicPointer  Special
-" HiLink libertybasicProgramFlow Statement
-" HiLink libertybasicTypeCasting Type
-" HiLink libertybasicUserInput  Statement
-" HiLink libertybasicOut  Comment
-" HiLink libertybasicOut2  Comment
-" HiLink libertybasicSkip  Comment
-" HiLink libertybasicConditional Conditional
-" HiLink libertybasicHexError  Error
-" HiLink libertybasicOctalError  Error
-" HiLink libertybasicPreProcInclude  Include
-  delcommand HiLink
+  HiLink lbString       String
+  HiLink lbMathOp       Operator
+  HiLink lbLogicalOp    Operator
+  HiLink lbInteger      Number
+  HiLink lbFloat        Number
+  HiLink lbTodo         Todo
+  HiLink lbKeyword      Statement
+  HiLink lbComment      Comment
+  HiLink lbLoop         Repeat
+  HiLink lbConditional  Conditional
+  HiLink lbLabel        Identifier
+  HiLink lbFile         Statement
+  HiLink lbIdentifier   Identifier
+ delcommand HiLink
 endif
 
 let b:current_syntax = "libertybasic"
