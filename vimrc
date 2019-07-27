@@ -79,25 +79,16 @@
 " }
 " Filetype customization {
     syntax enable
-    filetype plugin indent on
-    "let asmsyntax="nasm"            " default assembly file syntax
-    " from vimtips wiki, syntax highlighting group under cursor
-    map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . "> trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
+    filetype plugin on
+    filetype indent on
 " }
 " UI Stuff {
-"colorscheme lucius
-"LuciusBlack
-    "colorscheme slate
-    "colorscheme lucius
-    "LuciusBlack
-    "let g:monochrome_italic_comments = 1
-    "colorscheme monochrome
-    "colorscheme nightshade
     colorscheme cobalt
     " it seems that most colorschemes do cterm=none for comments, and
     " switching schemes will override this setting. i don't know enough
     " about how people really do things in the vim world to be comfortable
     " putting this in the color schemes as an override just yet.
     highlight comment cterm=italic
+    " from vimtips wiki, syntax highlighting group under cursor
+    map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . "> trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " }
