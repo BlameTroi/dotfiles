@@ -188,6 +188,9 @@ alias tmux='tmux -2'
 # colors for mc not quite right yet
 alias mc='mc -b'
 
+# python3 over 2
+alias python='python3'
+
 # if nvim is installed, use it instead of vim
 # ### nvim is proving problematic so ... let's
 # ### just stay with vim
