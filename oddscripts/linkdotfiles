@@ -4,15 +4,16 @@
 # but some of them need review (gdbinit
 # for sure)
 
+# todo: check for existence of link from
+#       if it's a symlink, unlink
+#       if it's a file (say, default .bashrc) then
+#       back it up
 # bash
 ln -sv ~/dotfiles/bashrc ~/.bashrc
 
 # global git
 ln -sv ~/dotfiles/gitconfig ~/.gitconfig
-ln -sv ~/dotfiles/git ~/.config/git
-
-# above dotfiles/git is unsafe, this script needs
-# to become smarter!
+ln -sv ~/dotfiles/gitignore ~/.gitignore
 
 # vim
 ln -sv ~/dotfiles/gvimrc ~/.gvimrc
