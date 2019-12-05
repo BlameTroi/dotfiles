@@ -118,6 +118,9 @@ alias lla='ls -lA'
 # for midnight commander until i can get a decent skin worked up
 alias mc='mc -b'
 
+# python virtual environments ...
+alias activate-pyenv3="source ~/python-virtual-environments/pyenv3/bin/activate"
+
 # Umask
 #
 # /etc/profile sets 022, removing write perms to group + others.
