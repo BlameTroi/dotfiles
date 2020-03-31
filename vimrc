@@ -1,6 +1,6 @@
 " Troy's .vimrc
-" Environment {
-    " Identify platform {
+" Environment {{{
+    " Identify platform {{{
         silent function! OSX()
             return has('macunix')
         endfunction
@@ -10,23 +10,23 @@
         silent function! WINDOWS()
             return  (has('win32') || has('win64'))
         endfunction
-    " }
-    " Basics {
+    " }}}
+    " Basics {{{
         set nocompatible        " Must be first line
         if !WINDOWS()
             set shell=/bin/bash
         endif
-    " }
-    " Windows Compatible {
+    " }}}
+    " Windows Compatible {{{
         " On Windows, also use '.vim' instead of 'vimfiles'; this makes synchronization
         " across (heterogeneous) systems easier.
         if WINDOWS()
           set runtimepath=$HOME/.vim,$VIM/vimfiles,$VIMRUNTIME,$VIM/vimfiles/after,$HOME/.vim/after
         endif
-    " }
+    " }}}
     
-" }
-" Vim UI {
+" }}}
+" Vim UI {{{
     set tabpagemax=10               " Only show 10 tabs
     set showmode                    " Display the current mode
     set cursorline                  " Highlight current line
@@ -63,10 +63,14 @@
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
     set foldenable                  " Auto fold code
+    set foldmethod=indent           " indent makes the most sense to me
+    set foldlevelstart=10           " open most folds when starting
+    set foldnestmax=10              " never ever write code this deeply nested
+
     " set list
     " set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
-" }
-" Formatting {
+" }}}
+" Formatting {{{
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
@@ -76,19 +80,26 @@
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
-" }
-" Filetype customization {
+" }}}
+" Filetype customization {{{
     syntax enable
     filetype plugin on
     filetype indent on
-" }
-" UI Stuff {
+    au FileType py set autoindent
+    au FileType py set smartindent
+    au FileType py set textwidth=79 " PEP-8 Friendly
+" }}}
+" UI Stuff {{{
     colorscheme cobalt
     " it seems that most colorschemes do cterm=none for comments, and
     " switching schemes will override this setting. i don't know enough
     " about how people really do things in the vim world to be comfortable
     " putting this in the color schemes as an override just yet.
     highlight comment cterm=italic
+" }}}
+" Key remaps {{{
     " from vimtips wiki, syntax highlighting group under cursor
     map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . "> trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-" }
+    " from https://dougblack.io/words/a-good-vimrc.html, toggle fold in normal
+    nnoremap <space> za
+" }}}
