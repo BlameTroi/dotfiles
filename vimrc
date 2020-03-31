@@ -103,3 +103,4 @@
     " from https://dougblack.io/words/a-good-vimrc.html, toggle fold in normal
     nnoremap <space> za
 " }}}
+" vim:foldmethod=marker:foldlevel=0
