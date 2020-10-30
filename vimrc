@@ -90,7 +90,10 @@
     au FileType py set textwidth=79 " PEP-8 Friendly
 " }}}
 " UI Stuff {{{
-    colorscheme cobalt
+    "set background=light
+    "colorscheme solarized
+    colorscheme default
+    " colorscheme cobalt
     " it seems that most colorschemes do cterm=none for comments, and
     " switching schemes will override this setting. i don't know enough
     " about how people really do things in the vim world to be comfortable
@@ -102,5 +105,6 @@
     map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . "> trans<" . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
     " from https://dougblack.io/words/a-good-vimrc.html, toggle fold in normal
     nnoremap <space> za
+    let mapleader = ","
 " }}}
 " vim:foldmethod=marker:foldlevel=0

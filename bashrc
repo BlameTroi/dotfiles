@@ -142,17 +142,26 @@ umask 033
 # my customizations:
 
 # prompt
-__git_ps1 ()
-{
-    local b="$(git symbolic-ref HEAD 2>/dev/null)";
-    if [ -n "$b" ]; then
-        printf "(%s)" "${b##refs/heads/}";
-    fi
-}
+#__git_ps1 ()
+#{
+#    local b="$(git symbolic-ref HEAD 2>/dev/null)";
+#    if [ -n "$b" ]; then
+#        printf "(%s)" "${b##refs/heads/}";
+#    fi
+#}
 
 #PS1='[\u@\h \W]\$ '
 #PS1="\u@\h \W\$(__git_ps1)$ "
-PS1="\h \W\$(__git_ps1)$ "
+#PS1="\h \W\$(__git_ps1)$ "
+
+GOPATH=$HOME/go
+function _update_ps1() {
+    PS1="$($GOPATH/bin/powerline-go -error $?)"
+}
+
+if [ "$TERM" != "linux" ] &&  [ -f "$GOPATH/bin/powerline-go" ]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
 
 set -o vi
 
