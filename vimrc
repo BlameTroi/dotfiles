@@ -29,9 +29,9 @@
 " Vim UI {{{
     set tabpagemax=10               " Only show 10 tabs
     set showmode                    " Display the current mode
-    set cursorline                  " Highlight current line
-    highlight clear SignColumn      " SignColumn should match background
-    highlight clear LineNr          " Current line number row will have same background color in relative mode
+    set nocursorline                " Highlight current line
+    "highlight clear SignColumn      " SignColumn should match background
+    "highlight clear LineNr          " Current line number row will have same background color in relative mode
     "highlight clear CursorLineNr    " Remove highlight color from current line number
     if has('cmdline_info')
         set ruler                   " Show the ruler
@@ -90,15 +90,17 @@
     au FileType py set textwidth=79 " PEP-8 Friendly
 " }}}
 " UI Stuff {{{
-    "set background=light
-    "colorscheme solarized
-    colorscheme default
-    " colorscheme cobalt
+    set background=dark
+    " something of a hack for hyper.js
+    if (has('termguicolors'))
+        set termguicolors
+    endif
+    colorscheme solarized
     " it seems that most colorschemes do cterm=none for comments, and
     " switching schemes will override this setting. i don't know enough
     " about how people really do things in the vim world to be comfortable
     " putting this in the color schemes as an override just yet.
-    highlight comment cterm=italic
+    "highlight comment cterm=italic
 " }}}
 " Key remaps {{{
     " from vimtips wiki, syntax highlighting group under cursor
