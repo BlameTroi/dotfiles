@@ -90,12 +90,20 @@
     au FileType py set textwidth=79 " PEP-8 Friendly
 " }}}
 " UI Stuff {{{
+    " color scheme
     set background=dark
+    colorscheme solarized
+
     " something of a hack for hyper.js
     if (has('termguicolors'))
         set termguicolors
     endif
-    colorscheme solarized
+
+    " nvim hack, guicursor applies to terminal mode as well???
+    " this disables changing the cursor to a thin vertical bar
+    " when in insert mode
+    set guicursor=
+
     " it seems that most colorschemes do cterm=none for comments, and
     " switching schemes will override this setting. i don't know enough
     " about how people really do things in the vim world to be comfortable
