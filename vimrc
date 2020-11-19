@@ -71,6 +71,7 @@
     " set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 " }}}
 " Formatting {{{
+    "set modeline                    " it apperas that this is not a default on for neovim
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
     set shiftwidth=4                " Use indents of 4 spaces
@@ -90,14 +91,25 @@
     au FileType py set textwidth=79 " PEP-8 Friendly
 " }}}
 " UI Stuff {{{
-    " color scheme
-    set background=dark
-    colorscheme solarized
+"   color scheme
+"   set background=dark
+"   colorscheme solarized
 
-    " something of a hack for hyper.js
+"   " something of a hack for hyper.js
     if (has('termguicolors'))
         set termguicolors
     endif
+
+    " trying dracula theme
+    set t_Co=256
+    packadd! dracula
+    syntax enable
+    colorscheme dracula
+
+    " lightline configuration
+    let g:lightline = {
+        \ 'colorscheme': 'Dracula',
+        \}
 
     " nvim hack, guicursor applies to terminal mode as well???
     " this disables changing the cursor to a thin vertical bar
