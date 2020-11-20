@@ -92,23 +92,22 @@
 " }}}
 " UI Stuff {{{
 "   color scheme
-"   set background=dark
-"   colorscheme solarized
 
 "   " something of a hack for hyper.js
     if (has('termguicolors'))
         set termguicolors
     endif
 
-    " trying dracula theme
     set t_Co=256
-    packadd! dracula
     syntax enable
-    colorscheme dracula
+    "colorscheme default
+    colorscheme snazzy
+    let g:SnazzyTransparent = 1
+    set background=dark
 
     " lightline configuration
     let g:lightline = {
-        \ 'colorscheme': 'Dracula',
+        \ 'colorscheme': 'snazzy',
         \}
 
     " nvim hack, guicursor applies to terminal mode as well???
