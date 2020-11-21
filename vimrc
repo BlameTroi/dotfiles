@@ -26,6 +26,39 @@
     " }}}
     
 " }}}
+" Vim-Plug {{{
+  call plug#begin('~/.vim/plugged')
+  Plug 'ctrlpvim/ctrlp.vim'
+  " at some point investigate replacing with fzf???
+  Plug 'junegunn/goyo.vim'
+  " Markdown / Writing
+  Plug 'reedes/vim-pencil'
+  Plug 'tpope/vim-markdown'
+  Plug 'jtratner/vim-flavored-markdown'
+  Plug 'itchyny/lightline.vim'
+  Plug 'connorholyday/vim-snazzy'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'tpope/vim-surround'
+  Plug 'kkoomen/vim-doge'
+  Plug 'tpope/vim-repeat'
+  Plug 'maxbrunsfeld/vim-yankstack'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
+  Plug 'farmergreg/vim-lastplace'
+  Plug 'mhinz/vim-startify'
+  Plug 'ajorgensen/vim-markdown-toc'
+  Plug 'pangloss/vim-javascript'
+  " Use release branch (recommend)
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  " : CocInstall coc-clangd
+  " : CocInstall coc-json
+  " : CocInstall coc-html
+  " : CocInstall coc-lists
+  " : CocInstall coc-snippets
+  " ? wrong??? Plug 'clangd/coc-clangd'
+  call plug#end()
+" }}}
 " Vim UI {{{
     set tabpagemax=10               " Only show 10 tabs
     set showmode                    " Display the current mode
@@ -74,10 +107,10 @@
     "set modeline                    " it apperas that this is not a default on for neovim
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
-    set shiftwidth=4                " Use indents of 4 spaces
+    set shiftwidth=2                " Use indents of 4 spaces
     set expandtab                   " Tabs are spaces, not tabs
-    set tabstop=4                   " An indentation every four columns
-    set softtabstop=4               " Let backspace delete indent
+    set tabstop=2                   " An indentation every four columns
+    set softtabstop=2               " Let backspace delete indent
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
