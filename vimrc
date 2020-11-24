@@ -30,39 +30,43 @@
   call plug#begin('~/.vim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
   " at some point investigate replacing with fzf???
-  Plug 'junegunn/goyo.vim'
   " Markdown / Writing
-  Plug 'reedes/vim-pencil'
-  Plug 'tpope/vim-markdown'
-  Plug 'jtratner/vim-flavored-markdown'
+" Plug 'junegunn/goyo.vim'
+"  Plug 'vimwiki/vimwiki'
+"  Plug 'reedes/vim-pencil'
+"  Plug 'tpope/vim-markdown'
+"  Plug 'jtratner/vim-flavored-markdown'
+"  Plug 'ajorgensen/vim-markdown-toc'
   Plug 'itchyny/lightline.vim'
   Plug 'connorholyday/vim-snazzy'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  Plug 'scrooloose/nerdcommenter'
-  Plug 'tpope/vim-surround'
-  Plug 'kkoomen/vim-doge'
-  Plug 'tpope/vim-repeat'
-  Plug 'maxbrunsfeld/vim-yankstack'
+  "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+"  Plug 'tpope/vim-vinegar'
+"  Plug 'scrooloose/nerdcommenter'
+"  Plug 'tpope/vim-surround'
+"  Plug 'kkoomen/vim-doge'
+"  Plug 'tpope/vim-repeat'
+"  Plug 'maxbrunsfeld/vim-yankstack'
   Plug 'airblade/vim-gitgutter'
-  Plug 'tpope/vim-fugitive'
+"  Plug 'tpope/vim-fugitive'
+"  vim-gitbranch is temporary until i put beefier git support in
+  Plug 'itchyny/vim-gitbranch'
   Plug 'farmergreg/vim-lastplace'
-  Plug 'mhinz/vim-startify'
-  Plug 'ajorgensen/vim-markdown-toc'
-  Plug 'pangloss/vim-javascript'
+"  Plug 'mhinz/vim-startify'
+"  Plug 'pangloss/vim-javascript'
   " Use release branch (recommend)
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   " : CocInstall coc-clangd
   " : CocInstall coc-json
   " : CocInstall coc-html
   " : CocInstall coc-lists
   " : CocInstall coc-snippets
-  " ? wrong??? Plug 'clangd/coc-clangd'
   call plug#end()
 " }}}
 " Vim UI {{{
     set tabpagemax=10               " Only show 10 tabs
-    set showmode                    " Display the current mode
-    set nocursorline                " Highlight current line
+    set noshowmode                  " Don't display the current mode
+                                    " let lightline handle that
+    set nocursorline                " Don't highlight current line
     "highlight clear SignColumn      " SignColumn should match background
     "highlight clear LineNr          " Current line number row will have same background color in relative mode
     "highlight clear CursorLineNr    " Remove highlight color from current line number
@@ -127,9 +131,9 @@
 "   color scheme
 
 "   " something of a hack for hyper.js
-    if (has('termguicolors'))
-        set termguicolors
-    endif
+    "if (has('termguicolors'))
+    "    set termguicolors
+    "endif
 
     set t_Co=256
     syntax enable
@@ -141,7 +145,14 @@
     " lightline configuration
     let g:lightline = {
         \ 'colorscheme': 'snazzy',
-        \}
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+        \ },
+        \ 'component_function': {
+        \   'gitbranch': 'gitbranch#name'
+        \ },
+        \ }
 
     " nvim hack, guicursor applies to terminal mode as well???
     " this disables changing the cursor to a thin vertical bar
