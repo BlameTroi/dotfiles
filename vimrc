@@ -28,8 +28,9 @@
 " }}}
 " Vim-Plug {{{
   call plug#begin('~/.vim/plugged')
-  Plug 'ctrlpvim/ctrlp.vim'
-  " at some point investigate replacing with fzf???
+  "Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
   " Markdown / Writing
 " Plug 'junegunn/goyo.vim'
 "  Plug 'vimwiki/vimwiki'
@@ -111,13 +112,13 @@
     "set modeline                    " it apperas that this is not a default on for neovim
     set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
-    set shiftwidth=2                " Use indents of 4 spaces
+    set shiftwidth=2                " Use indents of two spaces
     set expandtab                   " Tabs are spaces, not tabs
-    set tabstop=2                   " An indentation every four columns
+    set tabstop=2                   " An indentation every two columns
     set softtabstop=2               " Let backspace delete indent
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
-    set splitright                  " Puts new vsplit windows to the right of the current
-    set splitbelow                  " Puts new split windows to the bottom of the current
+    "set splitright                  " Puts new vsplit windows to the right of the current
+    "set splitbelow                  " Puts new split windows to the bottom of the current
 " }}}
 " Filetype customization {{{
     syntax enable
@@ -142,18 +143,6 @@
     let g:SnazzyTransparent = 1
     set background=dark
 
-    " lightline configuration
-    let g:lightline = {
-        \ 'colorscheme': 'snazzy',
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],
-        \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-        \ },
-        \ 'component_function': {
-        \   'gitbranch': 'gitbranch#name'
-        \ },
-        \ }
-
     " nvim hack, guicursor applies to terminal mode as well???
     " this disables changing the cursor to a thin vertical bar
     " when in insert mode
@@ -164,6 +153,21 @@
     " about how people really do things in the vim world to be comfortable
     " putting this in the color schemes as an override just yet.
     "highlight comment cterm=italic
+" }}}
+" Plugin additions {{{
+  " lightline configuration
+  let g:lightline = {
+      \ 'colorscheme': 'snazzy',
+      \ }
+  "   \ 'active': {
+  "   \   'left': [ [ 'mode', 'paste' ],
+  "   \           [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  "   \ },
+  "   \ 'component_function': {
+  "   \   'gitbranch': 'gitbranch#name'
+  "   \ },
+
+  set grepprg=rg\ --vimgrep\ --smart-case\ --follow
 " }}}
 " Key remaps {{{
     " from vimtips wiki, syntax highlighting group under cursor
