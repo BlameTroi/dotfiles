@@ -24,6 +24,8 @@
 !vimrc
 !vim
 !vim/**
+!zshcustom
+!zshcustom/**
 # Ignore the installed plugins
 vim/plugged/
 vim/plugged/**

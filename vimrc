@@ -176,4 +176,4 @@
     nnoremap <space> za
     let mapleader = ","
 " }}}
-" vim:foldmethod=marker:foldlevel=0
+" vim:foldmethod=marker:foldlevel=10
