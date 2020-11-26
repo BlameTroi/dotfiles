@@ -50,7 +50,7 @@ hi TabLineFill    term=reverse cterm=reverse
 hi CursorColumn   term=reverse ctermbg=7
 hi CursorLine     term=underline cterm=underline gui=underline guibg=black
 hi MatchParen     term=reverse ctermbg=6
-hi Comment        term=bold ctermfg=4
+hi Comment        term=bold ctermfg=4 cterm=italic
 hi Constant       term=underline ctermfg=1 guifg=red
 hi Special        term=bold ctermfg=3
 hi Identifier     term=underline ctermfg=6
