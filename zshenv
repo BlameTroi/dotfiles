@@ -1,7 +1,7 @@
 # .zshenv
 #
 # sourced on all shell invocations. generally things that
-# aren't needed for an interactive shell, which belng in
+# aren't needed for an interactive shell, which belong in
 # .zshrc.
 #
 # Path to your oh-my-zsh installation.

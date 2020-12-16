@@ -82,3 +82,18 @@ source /home/troi/.zshopts
 # aliases
 source /home/troi/.zshalias
 
+#
+# in WSL get the host system IP address, which
+# can change over restarts, and have it available
+# as both DISPLAY and WSLHOSTIP.
+export WSLHOSTIP=$(awk '/nameserver / {print $2}' /etc/resolv.conf 2>/dev/null)
+export DISPLAY=$WSLHOSTIP:0
+# check for and report error if we didn't get an IP
+# and unset our variables
+BOGUS=${WSLHOSTIP:-BOGUS}
+if [[ "$BOGUS" = "BOGUS" ]]; then
+  echo "WARNING: could not read nameserver from /etc/resolv.conf"
+  unset WSLHOSTIP
+  unset DISPLAY
+fi
+

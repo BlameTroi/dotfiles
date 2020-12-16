@@ -37,6 +37,7 @@
   " files and search
   Plug 'junegunn/fzf.vim'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() }}
+  Plug 'mileszs/ack.vim'
 
   " tags
   "Plug "preservim/tagbar"
@@ -46,6 +47,8 @@
   Plug 'itchyny/lightline.vim'
   Plug 'connorholyday/vim-snazzy'
   Plug 'farmergreg/vim-lastplace'
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'junegunn/vim-peekaboo'
 
   " git
   Plug 'airblade/vim-gitgutter'
@@ -170,7 +173,18 @@
         \ }
 
   set grepprg=rg\ --vimgrep\ --smart-case\ --follow
-  " }}}
+
+  " make ack plugin use ag, but ... it seems there is
+  " an ag.vim plugin that i should look into
+  if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+  endif
+
+  " use # to toggle relative number on and off while in normal mode
+  " useful when a range is needed
+  nnoremap <silent> # :set relativenumber!<cr>
+
+" }}}
 
   " Key remaps {{{
 
