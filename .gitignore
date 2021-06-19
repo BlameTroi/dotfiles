@@ -1,6 +1,7 @@
 # Ignore everything
 *
 # add back in things we need/want
+!*.el
 !.gitignore
 !git*
 !bashrc
